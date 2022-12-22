@@ -1,0 +1,96 @@
+.alert.alert-success,
+.alert.alert-danger,
+.alert.alert-ligth {
+  display: none;
+}
+
+.navbar-brand {
+  white-space: normal;
+}
+
+body {
+  background-color: #f6f6f6;
+}
+
+.container {
+  max-width: 90% !important;
+}
+
+#form-submit {
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.form-group > label {
+  background: #585858;
+  display: block;
+  margin: 0;
+  padding: 6px 11px;
+  color: #fff;
+}
+
+label span {
+  color: red;
+}
+
+.box {
+  background-color: #f6f6f6;
+  color: #000;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+#data tbody {
+  margin-bottom: 10px !important ;
+}
+#data {
+  overflow-x: scroll;
+}
+th,
+td {
+  min-width: 100px;
+}
+
+#form-submit,
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.box {
+  gap: 0;
+}
+.box p {
+  margin-bottom: 5px;
+}
+
+#form-submit .form-group,
+.box p {
+  width: 48%;
+}
+
+.form-group {
+  border: 1px solid #ddd;
+  padding: 7px;
+  background: #fff;
+}
+
+.form-control {
+  border-radius: 0 !important;
+}
+
+@media (max-width: 991px) {
+  #form-submit .form-group,
+  .box p {
+    width: 100%;
+  }
+  #form-submit {
+    padding: 0;
+  }
+}
+
+h3 {
+  width: 100%;
+}

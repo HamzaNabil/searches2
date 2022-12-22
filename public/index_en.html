@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searches</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      [dir="rtl"] * {
+        text-align: right !important;
+      }
+      a.lang_link {
+        color: #fff;
+        font-size: 20px;
+      }
+    </style>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body dir="rtl">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between"
+    >
+      <a class="navbar-brand" href="#"
+        >قاعدة بيانات البحوث لمنسوبي كليه العلوم الطبية التطبيقية
+      </a>
+      <a href="/enlang" class="lang_link">English</a>
+    </nav>
+
+    <div class="container">
+      <div class="alert alert-success" id="success">تم التسجيل بنجاح</div>
+      <div class="alert alert-danger" id="err-msg">برجاء التأكد من الحقول</div>
+
+      <form class="mt-3" id="form-submit">
+        <div class="form-group">
+          <label for="name">اسم عضو هيئة التدريس <span>*</span></label>
+          <input id="name" type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="email"> الايميل الجامعي <span>*</span></label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="job-number"> الرقم الوظيفى <span>*</span></label>
+          <input type="text" class="form-control" id="job-number" required />
+        </div>
+        <div class="form-group">
+          <label for="scopus-id"> Scopus ID <span>*</span></label>
+          <input type="text" class="form-control" id="scopus-id" required />
+        </div>
+        <div class="form-group">
+          <label for="wos-id"> WOS ID <span>*</span></label>
+          <input type="text" class="form-control" id="wos-id" required />
+        </div>
+        <div class="form-group">
+          <label for="research-gate-id"> Research gate ID <span>*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="research-gate-id"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="search-term"> اسم البحث <span>*</span></label>
+          <input type="text" class="form-control" id="search-term" required />
+          <small id="err" class="form-text text-danger alert-danger"></small>
+        </div>
+        <div class="form-group">
+          <label> القسم <span>*</span></label>
+          <div class="form-check">
+            <input
+              class=""
+              type="radio"
+              name="department"
+              id="department1"
+              value="المختبرات االكلينيكية"
+            />
+            <label class="form-check-label" for="department1">
+              المختبرات الإكلينكية
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="department"
+              id="department2"
+              value="العالج الطبيعي والتأهيل الصحي"
+            />
+            <label class="form-check-label" for="department2">
+              العلاج الطبيعي والتأهيل الصحي
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="department"
+              id="department3"
+              value="التمريض"
+            />
+            <label class="form-check-label" for="department3"> التمريض </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> الشطر <span>*</span></label>
+          <div class="form-check">
+            <input type="radio" name="satr" id="students1" value="الطلاب" />
+            <label class="form-check-label" for="students1"> الطلاب </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="satr" id="students2" value="الطالبات" />
+            <label class="form-check-label" for="students2"> الطالبات </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>هل يوجد أعضاء مشاركين من جامعة الجوف <span>*</span></label>
+          <div class="form-check">
+            <input type="radio" name="gof-member" id="gof-yes" value="نعم" />
+            <label class="form-check-label" for="gof-yes"> نعم </label>
+          </div>
+          <div class="form-check">
+            <input
+              class=""
+              type="radio"
+              name="gof-member"
+              id="gof-no"
+              value="لا"
+            />
+            <label class="form-check-label" for="gof-no"> لا </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="members-number">
+            عدد الاعضاء المشاركين من داخل الكلية
+          </label>
+          <input type="text" class="form-control" id="members-number" />
+        </div>
+
+        <div class="form-group">
+          <label for="add-coriat-members">
+            اضافة اسماء اعضاء هيئة التدريس المشاركين من كلية العلوم الطبية
+            التطبيقية
+          </label>
+          <input type="text" class="form-control" id="add-coriat-members" />
+        </div>
+
+        <div class="form-group">
+          <label for="gof-members">
+            عدد اعضاء هيئة التدريس المشاركين بالبحث من كليات اخري داخل جامعة
+            الجوف
+          </label>
+          <input type="text" class="form-control" id="gof-members" />
+        </div>
+
+        <div class="form-group">
+          <label for="add-gof-members">
+            اضافة اسماء اعضاء هيئة التدريس المشاركين من الكليات الاخرى بجامعة
+            الجوف مع ذكر الكلية المنتمين اليها
+          </label>
+          <input type="text" class="form-control" id="add-gof-members" />
+        </div>
+
+        <hr />
+
+        <h3>بيانات الابحاث</h3>
+
+        <div class="form-group">
+          <label for="mag-name">اسم المجلة <span>*</span></label>
+          <input id="mag-name" type="text" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mag-page">العدد والصفحة</label>
+          <input id="mag-page" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="doi">DOI</label>
+          <input id="doi" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label>حالة النشر <span>*</span></label>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="status"
+              id="published"
+              value="Published"
+              required
+            />
+            <label class="form-check-label" for="published"> Published </label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="status"
+              id="accepted"
+              value="Accepted"
+              required
+            />
+            <label class="form-check-label" for="accepted"> Accepted </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>البحث ضمن قاعدة البيانات <span>*</span></label>
+          <div class="form-check">
+            <input type="radio" name="db" id="scopus" value="Scopus" required />
+            <label class="form-check-label" for="scopus"> Scopus </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="db" id="WOS" value="WOS" required />
+            <label class="form-check-label" for="WOS"> WOS </label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="db"
+              id="n-wos"
+              value="Non- Scopus & Non WOS"
+              required
+            />
+            <label class="form-check-label" for="n-wos">
+              Non- Scopus & Non WOS
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check-label" for="date">
+            تاريخ قبول / نشر البحث <span>*</span>
+          </label>
+
+          <input
+            class="form-control"
+            type="date"
+            name="date"
+            id="date"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="citations">عدد الاقتباسات<span>*</span></label>
+          <input id="citations" type="text" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label> تصنيف المجلة <span>*</span></label>
+          <div class="form-check">
+            <input type="radio" name="mg-stars" id="q1" value="Q1" />
+            <label class="form-check-label" for="q1"> Q1 </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="mg-stars" id="q2" value="Q2" />
+            <label class="form-check-label" for="q2"> Q2 </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="mg-stars" id="q3" value="Q3" />
+            <label class="form-check-label" for="q3"> Q3 </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="mg-stars" id="q4" value="Q4" />
+            <label class="form-check-label" for="q4"> Q4 </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="mg-stars" id="q5" value="no" />
+            <label class="form-check-label" for="q5"> No </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="factor"> Factor Impactمعامل التأتير <span>*</span></label>
+          <input type="text" class="form-control" id="factor" />
+        </div>
+
+        <div class="form-group">
+          <label>هل البحث ممول أم لا <span>*</span></label>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="search-tmwil"
+              id="search-yes"
+              value="نعم"
+            />
+            <label class="form-check-label" for="search-yes"> نعم </label>
+          </div>
+          <div class="form-check">
+            <input
+              class=""
+              type="radio"
+              name="search-tmwil"
+              id="search-no"
+              value="لا"
+            />
+            <label class="form-check-label" for="search-no"> لا </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tamwil">جهه التمويل <span>*</span></label>
+          <input
+            id="tamwil"
+            type="text"
+            name="tamwil"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            >Are you an editor in a scientific journal? <span>*</span></label
+          >
+          <div class="form-check">
+            <input type="radio" name="editor" id="editor-yes" value="نعم" />
+            <label class="form-check-label" for="editor-yes"> نعم </label>
+          </div>
+          <div class="form-check">
+            <input
+              class=""
+              type="radio"
+              name="editor"
+              id="editor-no"
+              value="لا"
+            />
+            <label class="form-check-label" for="editor-no"> لا </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="journal"> What is the name of this journal? </label>
+          <input type="text" class="form-control" id="journal" />
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="">
+            ارفاق الصفحة األولى من البحث المنشور أو خطاب القبول PDF</label
+          >
+          <input type="file" name="sampleFile" />
+        </div> -->
+
+        <div
+          class="form-group"
+          style="background-color: transparent; border: 0"
+        ></div>
+
+        <button type="submit" class="d-block btn btn-primary">سجل</button>
+      </form>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
