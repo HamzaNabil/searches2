@@ -94,3 +94,43 @@ td {
 h3 {
   width: 100%;
 }
+
+.login-wrapper {
+  width: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.login-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
+
+.login-wrapper button {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  margin: auto;
+  text-align: center !important;
+  background-color: #222;
+  border: 1px solid #222;
+  color: #fff;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.login-wrapper button:hover {
+  background-color: transparent;
+  border: 1px solid #222;
+  color: #222;
+}

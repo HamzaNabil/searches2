@@ -1,10 +1,36 @@
+let userInput = document.querySelector("#login-username");
+let passInput = document.querySelector("#login-password");
+let buttonEl = document.querySelector("#login-btn");
+
+let containerWrapper = document.querySelector("#container-wrapper");
+let loginWrapper = document.querySelector(".login-wrapper");
+
 function getSearches() {
+  containerWrapper && (containerWrapper.style.display = "block");
+  loginWrapper && (loginWrapper.style.display = "none");
+
   fetch("/api/searches")
     .then((res) => res.json())
     .then((data) => uiSearches(data))
     .catch((err) => {});
 }
-getSearches();
+
+function handleLogin() {
+  let userValue = userInput.value.trim();
+  let passValue = passInput.value.trim();
+
+  if (userValue == "" || passValue == "") {
+    alert("Please Fill Data !");
+  } else {
+    if (userValue == "Srcams" && passValue == "p@ss.w0Rdd!") {
+      getSearches();
+    } else {
+      alert("username or password is incorrect !!");
+    }
+  }
+}
+
+buttonEl.addEventListener("click", handleLogin);
 
 function uiSearches(data) {
   document.querySelector("#d").innerHTML = "";
@@ -59,9 +85,13 @@ function deleteItem(id) {
     .then((data) => getSearches());
 }
 
-document.querySelector("#print").onclick = function () {
-  window.print();
-};
+let printBtn = document.querySelector("#print");
+
+if (printBtn) {
+  printBtn.onclick = function () {
+    window.print();
+  };
+}
 
 function html_table_to_excel(type) {
   var data = document.querySelector("#data");
@@ -76,6 +106,8 @@ function html_table_to_excel(type) {
 
 const export_button = document.getElementById("export_button");
 
-export_button.addEventListener("click", () => {
-  html_table_to_excel("xlsx");
-});
+if (export_button) {
+  export_button.addEventListener("click", () => {
+    html_table_to_excel("xlsx");
+  });
+}
